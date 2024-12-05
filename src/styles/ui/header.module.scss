@@ -1,0 +1,29 @@
+.headerWrapper {
+  border-bottom: 1px solid gray;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+
+  .logoutBtn {
+    width: 120px;
+    height: 35px;
+    font-size: 14px;
+    font-weight: 800;
+    border-radius: 6px;
+    border: none;
+    background-color: salmon;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    &:active {
+      opacity: 0.9
+    }
+
+  }
+}

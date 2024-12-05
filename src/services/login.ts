@@ -14,6 +14,9 @@ export interface IToken {
 export const loginQuery = {
     getAuthenticate: (data: ILogin): any => authenticate(data),
     getRefreshToken: (data: IToken): any => refresh(data),
+    getCookieSample: (): any => cookieSample(),
+    getSessionSample: (): any => sessionSample(),
+    getTokenSample: (): any => tokenSample(),
 }
 
 const authenticate = (data: ILogin): AxiosPromise => {
@@ -22,4 +25,16 @@ const authenticate = (data: ILogin): AxiosPromise => {
 
 const refresh = (data: IToken): AxiosPromise => {
     return axiosInstance.post("/auth/refresh", data)
+}
+
+const cookieSample = (): AxiosPromise => {
+    return axiosInstance.post("/auth/cookieSample")
+}
+
+const sessionSample = (): AxiosPromise => {
+    return axiosInstance.post("/auth/sessionSample")
+}
+
+const tokenSample = (): AxiosPromise => {
+    return axiosInstance.post("/auth/jwtSample")
 }

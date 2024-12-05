@@ -13,12 +13,27 @@ const initTodo: ITodoDetail = {
 }
 
 const TodoList = (): ReactElement => {
-    const { userId, changeUserId } = useCoreStore()
+    const { userId } = useCoreStore()
 
     const [newTodoDetail, setNewTodo] = useState<ITodoDetail>(initTodo)
     const [updateTodoDetail, setUpdateTodo] = useState<ITodoDetail>(initTodo)
 
-    const { data: todoListData, isLoading, refetch: refetchTodoListData } = useQuery<any>(todoQuery.getTodoList(userId))
+    const {
+        data: todoListData,
+        isLoading,
+        refetch: refetchTodoListData,
+        status,
+        fetchStatus,
+    } = useQuery<any>(todoQuery.getTodoList(userId))
+    /*
+    TODO: 강의자료 참고 콘솔 부분 > useQuery의 query status 부분
+     */
+    console.log("status", status)
+
+    /*
+    TODO: 강의자료 참고 콘솔 부분 > useQuery의 fetch status 부분
+     */
+    console.log("fetchStatus", fetchStatus)
 
     const { mutate: addTodoMutation } = useMutation<ITodoDetail, ITodoDetail, ITodoDetail>(
         todoQuery.addTodoDetail(userId),
@@ -28,11 +43,6 @@ const TodoList = (): ReactElement => {
     )
     const { mutate: deleteTodoMutation } = useMutation<string, string, string>(todoQuery.deleteTodoDetail(userId))
     const { mutate: completeTodoMutation } = useMutation<string, string, string>(todoQuery.completeTodoDetail(userId))
-
-    const handleLogout = (): void => {
-        changeUserId("")
-        signOut({ callbackUrl: "/" })
-    }
 
     const addTodo = (): void => {
         if (!newTodoDetail.title || !newTodoDetail.description) {
@@ -98,7 +108,6 @@ const TodoList = (): ReactElement => {
     return (
         <div>
             <h1>{"[하기 싫지만 왠지 해야할 것 같은 TODO List]"}</h1>
-            <button onClick={handleLogout}>로그아웃!!!!</button>
             <br />
             <div>
                 <h3>할 일 신규 추가</h3>

@@ -1,0 +1,42 @@
+.button {
+  width: 120px;
+  height: 50px;
+  padding: 12px 13px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+
+  &:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.authSampleWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  .eachWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    textarea {
+      width: 500px;
+      height: 200px;
+
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+}

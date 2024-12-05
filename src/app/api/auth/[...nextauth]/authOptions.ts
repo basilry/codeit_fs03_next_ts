@@ -1,9 +1,9 @@
 import { NextAuthOptions } from "next-auth"
-import { IJwtPayload } from "@interfaces/root"
-import { loginQuery } from "@services/login"
 import { jwtDecode } from "jwt-decode"
 import { JWT } from "next-auth/jwt"
 import CredentialsProvider, { CredentialsConfig } from "next-auth/providers/credentials"
+import { IJwtPayload } from "@interfaces/root"
+import { loginQuery } from "@services/login"
 import axiosInstance from "@lib/axios/axiosInstance"
 
 const refreshAccessToken = async (token: JWT): Promise<JWT> => {

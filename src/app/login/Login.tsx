@@ -1,11 +1,11 @@
 "use client"
 
 import { ReactElement, useEffect, useState } from "react"
-import { ILogin } from "@services/login"
 import { useRouter } from "next/navigation"
 import { signIn, SignInResponse } from "next-auth/react"
 import { useCoreStore } from "@/lib/stores/store"
-import styles from "@styles/login.module.scss"
+import { ILogin } from "@services/login"
+import styles from "@styles/pages/login.module.scss"
 
 const initLoginData: ILogin = {
     userId: "",
@@ -46,7 +46,7 @@ const Login = (): ReactElement => {
 
     useEffect(() => {
         if (userId) {
-            router.replace("/todo")
+            router.replace("/")
         }
     }, [router, userId])
 

@@ -14,11 +14,6 @@ export const todoQuery = {
         queryFn: () => getTodoList(userId),
         staleTime: 0,
     }),
-    getTodoDetail: (userId: string, todoId: number): any => ({
-        queryKey: todoKeys.detail(String(userId) + "_" + String(todoId)),
-        queryFn: () => getTodoDetail(userId, todoId),
-        staleTime: 0,
-    }),
     addTodoDetail: (userId: string): any => ({
         mutationFn: (data: ITodoDetail) => addTodoDetail(userId, data),
     }),
@@ -36,15 +31,10 @@ export const todoQuery = {
 const todoKeys = {
     all: ["todos"] as const,
     list: (userId: string) => [...todoKeys.all, "list", userId] as const,
-    detail: (todoId: string) => [...todoKeys.all, "detail", todoId] as const,
 }
 
 const getTodoList = async (userId: string): AxiosPromise => {
     return await axiosInstance.get(`/todo_list/${userId}`)
-}
-
-const getTodoDetail = async (userId: string, todoId: number): AxiosPromise => {
-    return await axiosInstance.get(`/todo_detail/${userId}/${todoId}`)
 }
 
 const addTodoDetail = async (userId: string, data: ITodoDetail): AxiosPromise => {

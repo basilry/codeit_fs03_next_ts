@@ -11,8 +11,6 @@ const AuthenticationWrapper = ({ children }: PropsWithChildren): ReactElement =>
     useEffect(() => {
         if (!userId) {
             router.replace("/login")
-        } else {
-            router.replace(`/todo`)
         }
     }, [router, userId])
 
